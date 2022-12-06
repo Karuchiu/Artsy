@@ -21,18 +21,10 @@ include('includes/header.php');
  
                 <div class="card">
                     <div class="card-header">
-                        <h4>Registration Form</h4>
+                        <h4>Login Form</h4>
                     </div>
                     <div class="card-body">
                         <form action="functions/authcode.php" method="POST">
-                            <div class="mb-2">
-                                <label class="form-label">Username</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter your name">
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label">Phone Number</label>
-                                <input type="phone-number" name="phone" class="form-control" placeholder="Enter your phone number">
-                            </div>
                             <div class="mb-2">
                                 <labelclass="form-label">Email address</label>
                                     <input type="email" name="email" class="form-control" placeholder="Enter your email">
@@ -41,11 +33,7 @@ include('includes/header.php');
                                 <label class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Enter password">
                             </div>
-                            <div class="mb-2">
-                                <label class="form-label">Password</label>
-                                <input type="password" name="cpassword" class="form-control" placeholder="Confirm password">
-                            </div>
-                            <button type="submit" name="register_btn" class="btn btn-primary">Submit</button>
+                            <button type="submit" name="login_btn" class="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>

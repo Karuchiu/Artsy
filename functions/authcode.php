@@ -2,6 +2,7 @@
 
 session_start();
 include('../config/dbcon.php');
+include('myfunctions.php');
 
 if (isset($_POST['register_btn'])) {
     $name = mysqli_real_escape_string($con, $_POST['name']);
@@ -15,27 +16,50 @@ if (isset($_POST['register_btn'])) {
     $check_email_query_run = mysqli_query($con, $check_email_query);
 
     if (mysqli_num_rows($check_email_query_run) > 0) {
-        $_SESSION['message'] = "Email already registered";
-        header('Location: ../register.php');
-    }
-    else{
+        redirect("../register.php", "Email already registered");
+    } else {
         if ($password == $cpassword) {
             //Insert User Data
             $insert_query = "INSERT INTO users (name, phone, email, password) VALUES('$name', '$phone', '$email', '$password')";
             $insert_query_run = mysqli_query($con, $insert_query);
-    
+
             if ($insert_query_run) {
-                $_SESSION['message'] = "Registered successfully";
-                header('Location: ../login.php');
+                redirect("../login.php","Registered successfully");
             } else {
-                $_SESSION['message'] = "Something went wrong";
-                header('Location: ../register.php');
+                redirect("../register.php", "Something went wrong");
             }
         } else {
-            $_SESSION['message'] = "Passwords do not match";
-            header('Location: ../register.php');
+            redirect("../register.php", "Passwords do not match" );
         }
     }
+} else if (isset($_POST['login_btn'])) {
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    
+    $login_query = "SELECT * FROM users WHERE email = '$email' AND password= '$password'";
+    $login_query_run = mysqli_query($con, $login_query);
+
+    if (mysqli_num_rows($login_query_run) > 0) {
+        $_SESSION['auth'] = true;
+
+        $userdata = mysqli_fetch_array($login_query_run);
+        $username = $userdata['name'];
+        $useremail = $userdata['email'];
+        $role_as = $userdata['role_as'];
+
+        $_SESSION['auth_user'] = [
+            'name' => $username,
+            'email' => $useremail
+        ];
+
+        $_SESSION['role_as'] = $role_as;
+
+        if ($role_as == 1) {
+            redirect("../admin/index.php","Welcome to Dashboard");
+        } else {
+            redirect("../index.php", "Logged in successfully");
+        }
+    } else {
+        redirect("../login.php", "Invalid Credentials");
+    }
 }

@@ -1,4 +1,3 @@
-<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +25,11 @@
 
   <style>
     .form-control{
+      border: 1px solid #b3a1a1 !important;
+      padding: 8px 10px;
+    }
+
+    .form-select{
       border: 1px solid #b3a1a1 !important;
       padding: 8px 10px;
     }

@@ -1,15 +1,16 @@
+<!DOCTYPE html>
 <?php
-
 include('../middleware/adminMiddleware.php');
 include('includes/header.php');
 ?>
+
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4>Categories</h4>
+                    <h4>Products</h4>
                 </div>
                 <div class="card-body">
                     <table class="table table-ordered table-striped">
@@ -19,16 +20,16 @@ include('includes/header.php');
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                                <th>Edit</th>
+                                <th>Delete</th </tr>
                         </thead>
                         <tbody>
                             <?php
-                            $category = getAll("category");
+                            $products = getAll("products");
 
 
-                            if (mysqli_num_rows($category) > 0) {
-                                foreach ($category as $item) {
+                            if (mysqli_num_rows($products) > 0) {
+                                foreach ($products as $item) {
                             ?>
                                     <tr>
                                         <td> <?= $item['id']; ?> </td>
@@ -40,11 +41,10 @@ include('includes/header.php');
                                             <?= $item['status'] == '0' ? "Visible" : "Hidden" ?>
                                         </td>
                                         <td>
-                                            <a href="edit-category.php?id=<?= $item['id']; ?>" class="btn btn-primary">Edit</a>
-                                            <form action="code.php" method="POST">
-                                                <input type="hidden" name="category_id" value="<?= $item['id'];?>">
-                                                <button type="submit" class="btn btn-danger" name="delete_category_btn">Delete</button>
-                                            </form>
+                                            <a href="edit-product.php?id=<?= $item['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                        </td>
+                                        <td>
+                                                <button type="button" class="btn btn-sm btn-danger delete_product_btn" value="<?= $item['id']; ?>">Delete</button>
                                         </td>
                                     </tr>
                             <?php

@@ -1,6 +1,7 @@
 <?php
+
+include('../middleware/adminMiddleware.php');
 include('includes/header.php');
-include('../middleware/adminMiddleware.php')
 ?>
 
 <div class="container">
@@ -16,7 +17,9 @@ include('../middleware/adminMiddleware.php')
             ?>
                     <div class="card">
                         <div class="card-header">
-                            <h4>Edit Category</h4>
+                            <h4>Edit Category
+                                <a href="category.php" class="btn btn-primary float-end">Back</a>
+                            </h4>
                         </div>
                         <div class="card-body">
                             <form action="code.php" method="POST" enctype="multipart/form-data">
@@ -25,10 +28,6 @@ include('../middleware/adminMiddleware.php')
                                         <input type="hidden" name="category_id" value="<?= $data['id']?>">
                                         <label for="">Name</label>
                                         <input type="text" name="name" value="<?= $data['name']?>" placeholder="Enter Category Name" class="form-control">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="">Slug</label>
-                                        <input type="text" name="slug" value="<?= $data['slug']?>" placeholder="Enter slug" class="form-control">
                                     </div>
                                     <div class="col-md-12">
                                         <label for="">Description</label>
@@ -41,26 +40,10 @@ include('../middleware/adminMiddleware.php')
                                         <input type="hidden" name="old_image" value="<?= $data['image']?>">
                                         <img src="../uploads/<?= $data['image']?>" height="100px" width="100px" alt="">
                                     </div>
-                                    <div class="col-md-12">
-                                        <label for="">Meta Title</label>
-                                        <input type="text" name="meta_title" value="<?= $data['meta_title']?>" placeholder="Enter meta title" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label for="">Meta Description</label>
-                                        <textarea rows="3" name="meta_description" placeholder="Enter meta description" class="form-control"><?= $data['meta_description']?></textarea>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <label for="">Meta Keywords</label>
-                                        <textarea rows="3" name="meta_keywords" placeholder="Enter meta keywords" class="form-control"><?= $data['meta_keywords']?></textarea>
-                                    </div>
+                                   
                                     <div class="col-md-6">
                                         <label for="">Status</label>
                                         <input type="checkbox" <?= $data['status'] ? "checked":""?> name="status">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="">Popular</label>
-                                        <input type="checkbox" <?= $data['popular'] ? "checked":""?> name="popular">
                                     </div>
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary " name="update_category_btn">Update</button>

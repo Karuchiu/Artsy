@@ -1,11 +1,11 @@
 <?php
 
-session_start();
 include('../config/dbcon.php');
 include('../functions/myfunctions.php');
 
 if (isset($_POST['add_category_btn'])) {
     $name = $_POST['name'];
+    $slug = $_POST['slug'];
     $description = $_POST['description'];
     $status = isset($_POST['status']) ? '1' : '0';
 
@@ -17,8 +17,8 @@ if (isset($_POST['add_category_btn'])) {
     $filename = time() . '.' . $image_ext;
 
     $cate_query = "INSERT INTO category
-    (name, description, status, image)
-    VALUES('$name',  '$description', '$status', '$filename' )";
+    (name, slug, description, status, image)
+    VALUES('$name', '$slug',  '$description', '$status', '$filename' )";
 
     $cate_query_run = mysqli_query($con, $cate_query);
 
@@ -31,6 +31,7 @@ if (isset($_POST['add_category_btn'])) {
 } else if (isset($_POST['update_category_btn'])) {
     $category_id = $_POST['category_id'];
     $name = $_POST['name'];
+    $slug = $_POST['slug'];
     $description = $_POST['description'];
     $status = isset($_POST['status']) ? '1' : '0';
 
@@ -46,7 +47,7 @@ if (isset($_POST['add_category_btn'])) {
     }
     $path = "../uploads";
 
-    $update_query = "UPDATE category SET name='$name', description='$description', status='$status', image='$update_filename' WHERE id='$category_id'";
+    $update_query = "UPDATE category SET name='$name', slug='$slug', description='$description', status='$status', image='$update_filename' WHERE id='$category_id'";
 
     $update_query_run = mysqli_query($con, $update_query);
 
@@ -83,6 +84,7 @@ if (isset($_POST['add_category_btn'])) {
 } else if (isset($_POST['add_product_btn'])) {
     $category_id = $_POST['category_id'];
     $name = $_POST['name'];
+    $slug = $_POST['slug'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $qty = $_POST['qty'];
@@ -97,8 +99,8 @@ if (isset($_POST['add_category_btn'])) {
 
     if ($name != "") {
         $product_query = "INSERT INTO products
-        (category_id, name, description, price, qty, status, image)
-        VALUES('$category_id', '$name', '$description', '$price', '$qty', '$status', '$filename' )";
+        (category_id, name, slug, description, price, qty, status, image)
+        VALUES('$category_id', '$name', '$slug', '$description', '$price', '$qty', '$status', '$filename' )";
 
         $product_query_run = mysqli_query($con, $product_query);
 
@@ -118,6 +120,7 @@ if (isset($_POST['add_category_btn'])) {
 
     $category_id = $_POST['category_id'];
     $name = $_POST['name'];
+    $slug = $_POST['slug'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $qty = $_POST['qty'];
@@ -137,7 +140,7 @@ if (isset($_POST['add_category_btn'])) {
         $update_filename = $old_image;
     }
 
-    $update_product_query = "UPDATE products SET name='$name', description='$description', price = '$price', qty = '$qty', status='$status', image='$update_filename' WHERE id='$product_id'";
+    $update_product_query = "UPDATE products SET name='$name', slug='$slug', description='$description', price = '$price', qty = '$qty', status='$status', image='$update_filename' WHERE id='$product_id'";
 
     $update_product_query_run = mysqli_query($con, $update_product_query);
 
@@ -150,7 +153,7 @@ if (isset($_POST['add_category_btn'])) {
         }
         redirect("edit-product.php?id=$product_id", "Product Updated");
     } else {
-        redirect("edit-product.php?id=$procuct_id", "Not Updated");
+        redirect("edit-product.php?id=$product_id", "Not Updated");
     }
 } else if (isset($_POST['delete_product_btn'])){
     

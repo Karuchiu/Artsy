@@ -18,6 +18,10 @@ include('includes/header.php');
                 <label for="">Name</label>
                 <input type="text" name="name" placeholder="Enter Category Name" class="form-control">
               </div>
+              <div class="col-md-6">
+                <label for="">Slug</label>
+                <input type="text" name="slug" placeholder="Enter Slug Name" class="form-control">
+              </div>
               <div class="col-md-12">
                 <label for="">Description</label>
                 <textarea rows="3" name="description" placeholder="Enter Description" class="form-control"></textarea>

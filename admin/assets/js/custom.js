@@ -25,8 +25,10 @@ $(document).ready(function () {
                 'delete_product_btn': true,
             },
             success: function (response) {
+              //console.log(response);
                 if (response == 200) {
                     swal("Success!", "Product has been deleted", "success");
+                    $("#products_table").load(location.href + " #products_table");
                 }else if (response == 500) {
                     swal("Error!", "Product NOT deleted", "error");
                 }

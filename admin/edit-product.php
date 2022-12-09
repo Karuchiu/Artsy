@@ -51,9 +51,13 @@ include('includes/header.php');
                                         <label class="mb-0">Name</label>
                                         <input type="text" name="name" value="<?= $data['name']?>" placeholder="Enter Category Name" class="form-control mb-2 ">
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="mb-0">Slug</label>
+                                        <input type="text" name="slug" value="<?= $data['slug']?>" placeholder="Enter Slug Name" class="form-control mb-2 ">
+                                    </div>
                                     <div class="col-md-12">
                                         <label class="mb-0">Description</label>
-                                        <textarea rows="3" name="description" placeholder="Enter Description" class="form-control mb-2 ">value="<?= $data['description']?>"</textarea>
+                                        <textarea rows="3" name="description" placeholder="Enter Description" class="form-control mb-2 "><?= $data['description']?></textarea>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="mb-0">Price</label>
@@ -76,7 +80,7 @@ include('includes/header.php');
                                     </div>
 
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary " name="edit_product_btn">Save</button>
+                                        <button type="submit" class="btn btn-primary " name="update_product_btn">Update</button>
                                     </div>
                                 </div>
 

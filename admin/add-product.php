@@ -37,7 +37,11 @@ include('includes/header.php');
                             </div>
                             <div class="col-md-6">
                                 <label class="mb-0">Name</label>
-                                <input type="text" name="name" placeholder="Enter Category Name" class="form-control mb-2 ">
+                                <input type="text" name="name" placeholder="Enter Product Name" class="form-control mb-2 ">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mb-0">Slug</label>
+                                <input type="text" name="slug" placeholder="Enter slug Name" class="form-control mb-2 ">
                             </div>
                             <div class="col-md-12">
                                 <label class="mb-0">Description</label>

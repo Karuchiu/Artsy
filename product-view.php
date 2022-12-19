@@ -23,7 +23,7 @@ if (isset($_GET['product'])) {
             </div>
         </div>
         <div class="bg-light py-4">
-            <div class="container mt-3">
+            <div class="container product_data mt-3">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="shadow">
@@ -41,13 +41,17 @@ if (isset($_GET['product'])) {
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="text">
+                                <div class="input-group mb-3" style="width: 100px">
+                                    <button class="input-group-text decrement-btn">-</button>
+                                    <input type="text" class="form-control text-center input-qty bg-white" value="1" disabled>
+                                    <button class="input-group-text increment-btn">+</button>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mt-3">
                             <div class="col-md-6">
-                                <button class="btn btn-primary px-4"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
+                                <button class="btn btn-primary px-4 addToCartBtn" value="<?= $product['id']; ?>"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
                             </div>
                             <div class="col-md-6">
                                 <button class="btn btn-danger px-4"> <i class="fa fa-heart me-2"></i>Add to Wishlist</button>

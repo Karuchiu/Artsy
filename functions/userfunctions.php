@@ -30,6 +30,14 @@
         return $query_run;
     }
 
+    function getCartItems(){
+        global $con;
+        $userId = $_SESSION['auth_user']['user_id'];
+        $query = "SELECT c.id as cid, c.prod_id, c.prod_qty, p.id as pid, p.name, p.image, p.price FROM carts c, products p WHERE c.prod_id=p.id AND c.user_id='$userId' ORDER BY c.id DESC";
+        $query_run = mysqli_query($con, $query);
+        return $query_run;
+    }
+
     function redirect($url, $message){
         $_SESSION['message'] = $message;
         header('Location: '.$url);

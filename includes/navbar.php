@@ -10,8 +10,12 @@
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="categories.php">Collections</a>
+          <a class="nav-link" href="categories.php">Collections</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="cart.php">Cart</a>
+        </li>
+
         <?php
         if (isset($_SESSION['auth'])) {
         ?>

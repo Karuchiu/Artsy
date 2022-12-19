@@ -9,7 +9,7 @@ if (isset($_GET['product'])) {
 
     if ($product) {
 ?>
-        <div class="py-3 bg-primary">
+        <div class="py-3 shadow">
             <div class="container">
                 <h6 class="text-white">
                     <a class="text-white" href="categories.php">
@@ -51,7 +51,7 @@ if (isset($_GET['product'])) {
 
                         <div class="row mt-3">
                             <div class="col-md-6">
-                                <button class="btn btn-primary px-4 addToCartBtn" value="<?= $product['id']; ?>"> <i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
+                                <button class="btn btn-primary px-4 addToCartBtn" value="<?= $product['id']; ?>"><i class="fa fa-shopping-cart me-2"></i>Add to Cart</button>
                             </div>
                             <div class="col-md-6">
                                 <button class="btn btn-danger px-4"> <i class="fa fa-heart me-2"></i>Add to Wishlist</button>
